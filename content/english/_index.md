@@ -7,7 +7,7 @@ banner:
   button:
     enable: true
     label: "Prenez un rendez vous"
-    link: "https://github.com/zeon-studio/hugoplate"
+    link: "https://calendly.com/wassel-umans-tech/30min"
 
 # Features
 features:
