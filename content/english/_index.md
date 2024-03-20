@@ -11,41 +11,57 @@ banner:
 
 # Features
 features:
-  - title: "What's Included in Hugoplate"
+  - title: "Conseil"
     image: "/images/service-1.png"
-    content: "Hugoplate is a comprehensive starter template that includes everything you need to get started with your Hugo project. What's Included in Hugoplate"
+    content: "Notre service de conseil en IT est conçu pour optimiser le développement logiciel afin d'accélérer votre time-to-market tout en réduisant les risques et les coûts. Nous vous accompagnons dans la création de services robustes qui répondent précisément aux besoins de votre entreprise, tout en améliorant leur qualité et en favorisant une collaboration étroite. Avec une approche axée sur l'utilisateur, nous encourageons l'innovation et renforçons la satisfaction des utilisateurs, vous permettant ainsi de maximiser les retours sur vos investissements technologiques."
     bulletpoints:
-      - "10+ Pre-build pages"
-      - "95+ Google Pagespeed Score"
-      - "Build with Hugo and TailwindCSS for easy and customizable styling"
-      - "Fully responsive on all devices"
-      - "SEO-optimized for better search engine rankings"
-      - "**Open-source and free** for personal and commercial use"
+      - "Continuous Delivery et DevOps"
+      - "Architecture Cloud"
+      - "Architecture SI"
+      - "Modernisation de SI"
+      - "Team Topologies"
+
     button:
       enable: false
       label: "Get Started Now"
       link: "#"
 
-  - title: "Discover the Key Features Of Hugo"
+  - title: "Coaching"
     image: "/images/service-2.png"
-    content: "Hugo is an all-in-one web framework for building fast, content-focused websites. It offers a range of exciting features for developers and website creators. Some of the key features are:"
+    content: "Bénéficiez de nos expértises pour accompagner vos équipes à Déliverer de la valeur durablement."
     bulletpoints:
-      - "Zero JS, by default: No JavaScript runtime overhead to slow you down."
-      - "Customizable: Tailwind, MDX, and 100+ other integrations to choose from."
-      - "UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more."
+      - "Continuous Delivery et DevOps"
+      - "Domain-Driven Design (DDD)"
+      - "Behavior-Driven Development (BDD)"
+      - "Test-Driven Development (TDD)"
+      - "Clean Code"
+      - "Techniques avancées de Refactoring"
     button:
       enable: true
       label: "Get Started Now"
       link: "https://github.com/zeon-studio/hugoplate"
 
-  - title: "The Top Reasons to Choose Hugo for Your Hugo Project"
+  - title: "Formation"
     image: "/images/service-3.png"
-    content: "With Hugo, you can build modern and content-focused websites without sacrificing performance or ease of use."
+    content: "..."
     bulletpoints:
-      - "Instantly load static sites for better user experience and SEO."
-      - "Intuitive syntax and support for popular frameworks make learning and using Hugo a breeze."
-      - "Use any front-end library or framework, or build custom components, for any project size."
-      - "Built on cutting-edge technology to keep your projects up-to-date with the latest web standards."
+      - "Test-Driven Development (TDD)"
+      - "Continuous Delivery et DevOps"
+      - "Domain-Driven Design (DDD)"
+      - "Serverless & Event-Driven Architectures (EDA)"
+    button:
+      enable: false
+      label: ""
+      link: ""
+
+  - title: "Delivery"
+    image: "/images/service-3.png"
+    content: "..."
+    bulletpoints:
+      - "Event-Driven Architectures (EDA)"
+      - "Serverless"
+      - "..."
+      - "..."
     button:
       enable: false
       label: ""
