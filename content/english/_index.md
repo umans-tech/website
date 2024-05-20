@@ -43,9 +43,9 @@ features:
 
   - title: "Formation"
     image: "/images/service-3.png"
-    content: "..."
+    content: "Formez vos équipes aux pratiques et disciplines essentielles."
     bulletpoints:
-      - "Test-Driven Development (TDD)"
+      - "Test-Driven Development (TDD) et Design Évolutif"
       - "Continuous Delivery et DevOps"
       - "Domain-Driven Design (DDD)"
       - "Serverless & Event-Driven Architectures (EDA)"
@@ -56,11 +56,11 @@ features:
 
   - title: "Delivery"
     image: "/images/service-3.png"
-    content: "..."
+    content: "Nous aidons à créer des équipes et des écosystèmes de livraison continue performants, même dans des contextes complexes. Entre la recommandation et la mise en œuvre, le chemin peut être long. Grâce à notre large palette d'expertise, nous vous accompagnons en travaillant avec vous pour transformer vos défis technologiques en succès concrets."
     bulletpoints:
       - "Event-Driven Architectures (EDA)"
       - "Serverless"
-      - "..."
+      - "Architecture Modernization"
       - "..."
     button:
       enable: false
