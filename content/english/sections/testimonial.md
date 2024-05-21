@@ -8,7 +8,7 @@ Thinker & Doer."
 testimonials:
 
   - name: "Simon Holmes, PhD"
-    designation: "Director, AI Solutions | Design, Delivery & Deployment | Agile product management | Digital Transformation at Faurecia"
+    designation: "Director, AI Solutions | Digital Transformation at Faurecia"
     avatar: "https://media.licdn.com/dms/image/C4D03AQFRYnCIaejezA/profile-displayphoto-shrink_800_800/0/1520411570081?e=1721865600&v=beta&t=9vlqCt7zSbFeJSsV20vYLIjU6znstq9ULuXtghscN8Y"
     content: "Wassel is a fantastic team member & tech lead. 
     Drive, technical outstandingness, great team player."

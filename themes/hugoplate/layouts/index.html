@@ -66,7 +66,7 @@
             <p>{{ .afterBulletpoints }}</p>
             {{ with .button }}
               {{ if .enable }}
-                <a class="btn btn-primary mt-6" href="{{ .link | absURL }}">
+                <a class="btn btn-primary mt-6" href="{{ .link | absURL }}" target="_blank" rel="noopener"> 
                   {{ .label }}
                   <i class="fa fa-arrow-right pl-2"></i>
                 </a>
