@@ -63,6 +63,7 @@
                 </li>
               {{ end }}
             </ul>
+            <p>{{ .afterBulletpoints }}</p>
             {{ with .button }}
               {{ if .enable }}
                 <a class="btn btn-primary mt-6" href="{{ .link | absURL }}">
