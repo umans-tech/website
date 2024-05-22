@@ -36,12 +36,6 @@ parent = "Pages"
 name = "Categories"
 url = "categories/"
 
-[[main]]
-parent = "Pages"
-name = "404 Page"
-url = "404/"
-
-
 # footer menu
 [[footer]]
 name = "About"

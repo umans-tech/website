@@ -17,4 +17,6 @@ social:
     link: https://www.linkedin.com/in/wassel-alazhar-8b991011/
 ---
 
-lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr navigation et dolore magna aliqua.
+Wassel Alazhar est consultant, architecte et développeur. Il aide ses clients à définir leurs stratégies technologiques, concevoir des systèmes d’information adaptés et constituer des équipes qui livrent du logiciel en continu. Il les aide à le faire en faisant avec eux.
+
+Avec plus de 15 ans d'expérience, Wassel Alazhar vous accompagne dans la définition de vos stratégies technologiques et la mise en place de systèmes d'information performants.
