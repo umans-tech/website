@@ -5,59 +5,25 @@ draft: false
 authors: Wassel Alazhar, Naji Alazhar
 ---
 
+**"Ultimate Software Crafter"**—un titre qui résonne avec une touche de provocation. L'artisanat logiciel serait-il en voie de disparition ?
 
-"Ultimate Software Craftsman"—un titre qui ne laisse pas indifférent. Depuis des années, les développeurs s'efforcent de rehausser les standards de leur métier, en cherchant constamment à allier excellence technique et professionnalisme. Aujourd'hui, avec l'émergence des agents autonomes de codage, une question se pose : ces nouvelles technologies menacent-elles cette quête d'amélioration continue, ou représentent-elles une opportunité inédite ? Cet article se propose de démystifier ces agents, d'explorer leur fonctionnement, et d'analyser leur impact potentiel sur notre métier. Dans un climat où les promesses d'automatisation totale suscitent à la fois enthousiasme et scepticisme, il est essentiel de discerner les faits des fictions. Nous examinerons également comment des pratiques éprouvées comme le Test-Driven Development (TDD) pourraient être adaptées pour faire évoluer l'artisanat logiciel vers un avenir plus automatisé. Suivez-nous dans cette réflexion sur l'avenir du métier.
+Depuis des années, les développeurs s'efforcent de rehausser les standards de leur métier, en cherchant constamment à allier excellence technique et professionnalisme. Aujourd'hui, avec l'émergence des agents autonomes de codage, une question se pose : ces nouvelles technologies menacent-elles cette quête d'amélioration continue, ou représentent-elles une opportunité inédite ? Avec ces technologies capables de générer du code de manière autonome, quel est encore le rôle du développeur dans la création logicielle ?
 
----
+Cet article se propose de démystifier ces agents, de décortiquer leur fonctionnement et de réfléchir à leur impact potentiel sur notre métier.
 
-"Ultimate Software Craftsman"—un titre qui résonne avec une touche de provocation. L'artisanat logiciel serait-il en voie de disparition ?
-Avec l'émergence des agents autonomes de codage, la question mérite d'être posée. Cet article se propose de démystifier ces nouvelles technologies, de décortiquer leur fonctionnement, et de réfléchir à leur impact potentiel sur notre métier. À une époque où la promesse du tout-automatisé fait du bruit, il est crucial de comprendre ce qui relève du fantasme et ce qui s'annonce comme la prochaine révolution. Nous explorerons également comment des techniques éprouvées comme le Test-Driven Development (TDD) peuvent être appliquées à ces agents pour transformer le développement logiciel automatisé. Suivez-nous dans cette exploration où l'avenir du métier se dessine.
+Dans un climat où les promesses d'automatisation totale génèrent beaucoup de bruit et suscitent à la fois enthousiasme et scepticisme, il est essentiel de discerner les faits des fictions, de distinguer ce qui relève de l'hyperbole de ce qui pourrait transformer durablement notre industrie.
 
----
+Nous explorerons également comment des techniques éprouvées, comme le Test-Driven Development (TDD), peuvent être appliquées à ces agents pour transformer le développement logiciel automatisé.
 
-"Ultimate Software Craftsman"—un titre qui ne laisse pas indifférent. À une époque où le mouvement Software Craftsmanship prône l'excellence technique et le professionnalisme, la montée des agents autonomes de codage semble poser une question fondamentale : assistons-nous à la fin de l'artisanat logiciel tel que nous le connaissons ? Avec ces technologies capables de générer du code de manière autonome, quel est encore le rôle du développeur dans la création logicielle ? Cet article se propose de démystifier ces nouveaux acteurs, de décortiquer leur fonctionnement, et de réfléchir à leur impact potentiel sur notre métier. Dans un contexte où la promesse du tout-automatisé génère beaucoup de bruit, il est essentiel de distinguer ce qui relève de l'hyperbole de ce qui pourrait transformer durablement notre industrie. Nous explorerons également comment des pratiques éprouvées comme le Test-Driven Development (TDD) peuvent être adaptées à ces agents pour faire évoluer l'artisanat logiciel vers un avenir plus automatisé. Plongeons ensemble dans cette réflexion sur l'avenir du métier.
-
----
-
-L'artisan logiciel touche-t-il à sa fin, ou sommes-nous simplement à l'aube d'une nouvelle ère où les machines prennent les rênes ? Avec l'explosion des technologies comme les "coding agents", "software engineering agents", ou encore "autonomous development agents", il est facile de s'emballer. Mais avant de succomber à l'engouement, il est crucial de démystifier ce qui se passe vraiment et de comprendre les implications réelles de ces innovations.
-
-Cet article ne cherche pas à vendre un rêve, ni à alimenter des craintes. Nous voulons plutôt offrir une lecture claire de l'actualité, explorer comment ces agents de codage s’intègrent dans notre pratique, et surtout examiner si certaines méthodes qui ont bien fonctionné pour les artisans logiciels humains, comme l’approche "Test-First", peuvent également porter leurs fruits dans ce nouveau contexte. Nous finirons par ouvrir le débat, car ce sujet mérite d'être discuté sans détour.
-
-L'objectif est simple : informer, réfléchir, explorer, et surtout, remettre en question ce que nous croyons acquis. Car si l’automatisation change la donne, il reste à déterminer si nous assistons à l’émergence du dernier artisan logiciel ou à l’ultime évolution de notre métier.
-
----
-
-Dans un monde où l'automatisation gagne chaque jour du terrain, le rôle de l'artisan logiciel est-il en train de se redéfinir ou même de disparaître ? Avec des technologies comme les agents de codage autonomes qui font les gros titres, il est facile de se laisser emporter par des fantasmes de futur sans codeurs, où les machines font tout le travail. Mais avant de conclure que nous sommes arrivés au dernier chapitre de l'artisanat logiciel, il est essentiel de faire un pas en arrière, de démystifier ce qui se passe réellement, et de comprendre les implications profondes de ces innovations.
-
-Cet article n'a pas pour but de prendre parti, ni de peindre un tableau alarmiste ou utopique. Nous voulons plutôt vous donner les clés pour naviguer dans cette nouvelle ère, où les termes comme "agent de codage", "agent d'ingénierie logicielle" ou encore "agent autonome de développement" sont de plus en plus présents. Pour simplifier, nous utiliserons le terme "agent de codage" tout au long de notre discussion.
-
-Nous allons faire le tri dans l'actualité pour distinguer les tendances réelles des effets de mode. Nous explorerons comment les techniques d'ingénierie logicielle éprouvées, comme l'approche "Test-First" qui a fait ses preuves chez les développeurs humains, peuvent encore jouer un rôle crucial dans ce contexte en pleine évolution. Enfin, nous terminerons par un appel à la discussion, car ce sujet complexe mérite plus qu'une simple analyse : il nécessite une réflexion collective et un échange d'idées.
-
-L'objectif de cet article est donc simple : informer, réfléchir, explorer, et surtout, remettre en question les certitudes. Nous vous invitons à nous accompagner dans cette exploration où la frontière entre l'artisanat traditionnel et l'automatisation se brouille, mais où le besoin d'expertise humaine reste plus pertinent que jamais.
-
----
-
-Les agents autonomes de développement seraient-ils en train de redéfinir ou de signer la fin de l'artisanat logiciel ? Avec l'essor des "coding agents", "software engineering agents", et autres "autonomous development agents", la tentation est grande de fantasmer sur un futur où les machines pourraient tout faire à notre place. Mais avant de céder à cette vision, prenons un moment pour dissiper les illusions et examiner de près ce qui se passe vraiment.
-
-Cet article ne cherche ni à encenser ni à diaboliser ces nouvelles technologies. Au lieu de cela, nous vous proposons de décrypter l'actualité, d'explorer les possibilités réelles qu'offrent ces agents de codage, et d'examiner comment des pratiques éprouvées, comme l'approche "Test-First" chère aux développeurs humains, continuent de jouer un rôle crucial dans un contexte où tout semble changer.
-
-Nous allons vous accompagner dans ce tri nécessaire : séparer les effets de mode des tendances durables, et voir ce que cela signifie réellement pour l'avenir de l'ingénierie logicielle. À la fin, nous ouvrirons la porte à une discussion, car ce sujet complexe mérite plus qu'un simple regard unidimensionnel – il exige une réflexion collective.
-
-Notre but est clair : informer, réfléchir, explorer, et surtout, remettre en question les certitudes. Car si l'avenir du code est en train de se jouer, il reste encore beaucoup à dire et à débattre sur le rôle irremplaçable de l'expertise humaine dans cette équation.
+Suivez-nous dans cette exploration où l'avenir du métier se dessine.
 
 ## Un Sujet Brûlant
 
-(Alternative de titre ## Au coeur de l'actu)
+L'agitation autour des agents autonomes de codage est palpable. Les annonces se succèdent, alimentées par des promesses parfois démesurées. Devin, par exemple, s'est fait connaître comme le "premier ingénieur logiciel IA", mais a rapidement sombré dans la controverse. Les attentes étaient énormes, mais les résultats bien en deçà. D'autres, comme GitHub Copilot Workspace, n'ont pas échappé au même sort, accumulant les démos ratées qui laissent le public sceptique. Ces agents sont encore en phase de développement, loin d'être prêts pour une adoption massive. On nous parle d'une révolution imminente, mais pour l'instant, seuls des produits fermés et des listes d'attente sont disponibles.
 
-- Exploration des buzz autour des technologies comme Devin et GitHub Copilot Workspace.
-- Analyse des annonces récentes et des alternatives open-source comme SWE-Agent.
-- Discussion sur la tendance actuelle et pourquoi cela ne va pas se calmer.
+Heureusement, des alternatives open-source commencent à voir le jour, offrant un peu plus de transparence et de compréhension. Parmi elles, SWE-Agent se distingue, montrant que tout n'est pas qu'une question de marketing. Mais la tendance actuelle ne va pas s'atténuer de sitôt. Les débats autour de ces technologies, entre espoir et désillusion, continuent d'alimenter la conversation. Dans ce contexte bouillonnant, il devient crucial de démêler le vrai du faux et d'explorer ce dont ces agents sont vraiment capables.
 
-Beaucoup d'éffet d'annonces, de belles vidéos et des démos ratées
-Du nouveau chaque jour.
-Beaucoup de marketing. Peu d'info précises
-Jusqu'à ce qu'il commence à y avoir des alternatives open sources.
-Et ça continue.
+Nous entrerons maintenant dans le vif du sujet en analysant les capacités actuelles des agents de codage autonomes. Que peuvent-ils réellement accomplir ?
 
 ## Capacités Actuelles des Agents de Codage
 
@@ -120,9 +86,9 @@ issue marshmallow:
 4. **Canon TDD, by Kent Beck** - [Lire sur Tidy First](https://tidyfirst.substack.com/p/canon-tdd)
 5. **ReAct: Synergizing Reasoning and Acting in Language Models** - [Lire sur arXiv](https://arxiv.org/abs/2210.03629)
 6. **Applying Generative AI to CVE remediation – early vulnerability patching in Continuous Integration Pipelines** - [Lire l'article](https://aws.amazon.com/fr/blogs/containers/applying-generative-ai-to-cve-remediation-early-vulnerability-patching-in-continuous-integration-pipelines/)
-6. **Map Evolution not Maturity, by Simon Wardley** - [Lire sur Medium](https://medium.com/@swardley/map-evolution-not-maturity-bae6ea1a2743)
-7. **Wardley Maps, by Simon Wardley** - [Télécharger le PDF](https://coach-agile.com/wp-content/uploads/2022/09/Wardley-Maps-Simon-Wardley-compresse.pdf)
-8. **Clean Code, Robert C. Martin (2008)** - Citation : "One might argue that a book about code is somehow behind the times that code is no longer the issue; that we should be concerned about models and requirements instead."
+7. **Map Evolution not Maturity, by Simon Wardley** - [Lire sur Medium](https://medium.com/@swardley/map-evolution-not-maturity-bae6ea1a2743)
+8. **Wardley Maps, by Simon Wardley** - [Télécharger le PDF](https://coach-agile.com/wp-content/uploads/2022/09/Wardley-Maps-Simon-Wardley-compresse.pdf)
+9. **Clean Code, Robert C. Martin (2008)** - Citation : "One might argue that a book about code is somehow behind the times that code is no longer the issue; that we should be concerned about models and requirements instead."
 
 ### Liens, tweets et vidéos (par ordre d'apparition)
 
