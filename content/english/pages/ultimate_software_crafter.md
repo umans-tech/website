@@ -25,111 +25,67 @@ Nous entrerons maintenant dans le vif du sujet en analysant les capacités actue
 
 ## Quelles sont les capacités actuelles des agents de codage ? État de l'art
 
-La réponse à cette question n'est pas simple
-Mais le mieux qu'on a trouvé pour répondre à cette question sont :
+Quand nous parlons d'agent autonome de codage, nous faisons référence à un programme capable de résoudre une tâche en toute autonomie et de soumettre une Pull Request (PR) à partir d'une demande de changement (issue, tâche, ou User Story) fournie sous forme de texte ou provenant d'un outil de gestion comme GitHub Issues, Jira, ou Notion.
 
-1. **SWE-Agent: Agent-Computer Interfaces Enable Automated Software Engineering** - [Lire sur arXiv](https://arxiv.org/abs/2405.15793)
-2. **SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?** - [Lire sur arXiv](https://arxiv.org/abs/2310.06770)
+Répondre à la question "Quelles sont les capacités actuelles des agents de codage ?" est cependant complexe pour plusieurs raisons. Les performances de ces agents varient considérablement en fonction des tâches, des environnements, et des modèles sous-jacents utilisés. De plus, les benchmarks et les études montrent des résultats en constante évolution, rendant difficile une évaluation stable. Enfin, les contextes d'application, les types de problèmes résolus, et la manière dont ces agents sont intégrés aux processus existants influencent également leurs capacités réelles.
 
-### Examen des capacités actuelles des agents de codage, au-delà du battage médiatique
+Pour tenter de répondre à cette question, nous nous appuyons sur deux études récentes qui, malgré leurs limites et biais, restent parmi les sources les plus sérieuses disponibles :
 
-Dans cette partie on va s'intéresser aux agents de codage qui ont la capacité de soumettre en toute autonomie une PR à partir d'une demande de changement (issue / tâche / US) du texte qu'on donne à l'agent ou auquel il peut y accéder depuis un outil de ticketing (comme github issue par exemple, ou Jira ou Notion...)
+1. **SWE-Agent: Agent-Computer Interfaces Enable Automated Software Engineering** ([Lire sur arXiv](https://arxiv.org/abs/2405.15793))
+2. **SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?** ([Lire sur arXiv](https://arxiv.org/abs/2310.06770))
 
-### Présentation du benchmark SWE-Bench et de ses résultats, y compris les taux de résolution des problèmes par les agents
+### SWE-Bench et SWE-Bench Lite : Benchmarking et résultats
 
-Expliquer le protocol de SWE-BENCH [à partir du papier](https://arxiv.org/abs/2310.06770)
+SWE-Bench est une référence pour évaluer les performances des agents de codage. Ce benchmark se base sur 2294 issues issues de 12 des dépôts GitHub les plus populaires. Le protocole est rigoureux : l'agent reçoit le commit parent d'une PR résolue et doit proposer une nouvelle PR qui sera validée en exécutant tous les tests associés.
 
-Annoncer les résultats
+**Protocole de SWE-Bench** : Pour chaque issue, l'agent reçoit le commit parent de la PR déjà résolue. L'agent doit générer une nouvelle PR, qui est ensuite validée par l'exécution de tous les tests liés à cette PR. Ce processus permet de vérifier la capacité de l'agent à résoudre les problèmes de manière autonome, en respectant les contraintes de qualité du code et de test.
 
-2 remarques principales :
+**SWE-Bench Lite** est une version allégée du benchmark initial, conçue pour se concentrer sur des issues plus ciblées et éliminer les variables qui pourraient biaiser les résultats. Cette version exclut, entre autres, les issues avec des dépendances externes ou des images, celles dont la description est trop courte (moins de 40 mots), ainsi que les PR touchant à plusieurs fichiers. Avec 300 issues sélectionnées pour leur clarté et leur maintenabilité, SWE-Bench Lite fournit un cadre plus précis pour évaluer la performance des agents dans un environnement contrôlé.
 
-- Ça va vite, très vite. Illustrer par un graphe avec le max des taux à chaque date
-- Méfiez-vous des résultats publiés dans le leaderboard. On a vérifié quelques un et on a trouvé que les résultats publiés sont trompeurs. Par exemple, les 19% annoncé de "🤠 AutoCodeRover (v20240408) + GPT 4 (0125)" sont issue des résultats aggrégés de 3 executions (Pass@3) en plus il est trop lent par rapport à SWE-agent. On expliquera plus tard l'impact, l'intérêt et les challenges d'aggréger les résultats de plusieurs executions.
+Les résultats obtenus sont impressionnants, mais ils doivent être interprétés avec précaution. L'évolution rapide des performances, comme illustré dans le graphique ci-dessus, montre une amélioration continue des taux de résolution. Cependant, tous les résultats ne sont pas égaux. Par exemple, AutoCodeRover avec GPT-4 a atteint 19 % de réussite, mais cela inclut trois exécutions distinctes (Pass@3), ce qui peut être trompeur. De plus, cette approche est plus lente que d'autres, comme SWE-Agent.
 
-Pour l'instant, dans un climat où il est difficile de voir clair, notre recommendation c'est de ne s'intéresser dans ce leaderboard qu'aux résultats qui cochent toutes les cases (open source pour la transparence, vérifiés et le taux concerne une seul execution Pass @1)
-avec ça on arrive à  18.13% aujourdh'hui (13% au moment quand nous avons fait notre présentaiton la première fois le 25/06/2024) et 26.67% pour le dataset bench-lite.
+Dans cet environnement de données souvent complexes, nous recommandons de se concentrer sur des résultats transparents et vérifiés, notamment ceux obtenus en open-source, avec une seule exécution (Pass@1). À ce jour, ces taux atteignent 18,13 % pour le benchmark standard et 26,67 % pour SWE-Bench Lite.
 
-Expliquer la différence entre SWE-BENCH et [SWE-BENCH lite](https://www.swebench.com/lite.html)
+**Remarque importante** : OpenAI s'est également intéressé à ce domaine, proposant [SWE-Bench Verified](https://openai.com/index/introducing-swe-bench-verified/), un ensemble de 500 problèmes validés par des ingénieurs logiciels, offrant ainsi un cadre d'évaluation encore plus rigoureux.
 
-### Opportunités et limitations observées avec l'utilisation des agents dans l'automatisation de l'ingénierie logicielle
+### Opportunités et limitations
 
 #### Limitations
 
-Dans l'état, les agents ne savent pas encore résoudre :
+Les agents actuels montrent des lacunes lorsqu'ils doivent traiter des issues nécessitant peu de modifications ou lorsque les descriptions sont trop concises. De plus, notre analyse se concentre uniquement sur la phase allant de l'issue à la PR, excluant ainsi :
 
-- Issues that don't require many changes
-- The issue description is concise and self-contained
-Dans cette étude on focalise sur travail entre l'issue et la PR, càd la partie du travail du développeur qui une fois le besoin du changement est formulé et lécriture du code càd avant sa revue et sonintégration de ce changement à la base principale ce qui exclue :
-- Work after the PR (review, test, release, monitor...)
-- Work before the issue (conversation, formulation...)
+- Le travail après la PR (revue, tests, déploiement, monitoring…)
+- Le travail avant l'issue (discussions, formulation des besoins…)
 
 #### Opportunités
 
-Déjà dans l'état, on pourrait pensait qu'il aurait un intérêt économique;
-Si on se met dans la peau d'un décideur, on pourrait être facilement tenté par l'idée avec ce calcul approximatif :
+Malgré ces limitations, les agents autonomes présentent un potentiel économique intéressant :
 
-149.58 man day
-for 600$
-instead of 75K$*
+- **149,58 jours-homme pour 600 $**, contre 75 000 $ en méthode traditionnelle.
 
-(*) assuming 500$ average daily rate
+Détails :
 
-Détail du calcul :
-Cost:
+- Coût : < 2 $ par issue (API GPT-4o) + infrastructure d'exécution.
+- Résultats : 54 issues résolues sur 300, soit 149,58 jours-homme.
+- Coût moyen par jour-homme : 4,01 $.
 
-- < 2$ per issue (Gpt-4o LLM api)
-- few $ for the agent execution infrastructure
-- 300 issue => ~600$
-Expected benefits:
-- 54 / 300 issues solved
-- 2.77 man day / issue (avg)
-- 18% *2.77* 300 = 149.58 man days
-- (300 * 2$) / 149.58 = 4.01 $ cost per man day
-- 2-10 min / issue
+Les résultats pour SWE-Bench Lite sont encore plus impressionnants :
 
-“It costs on average ~2.77 days for developers to create pull requests…” [samples from SWE-Bench-Lite dataset]
-Source: “AutoCodeRover: Autonomous Program Improvement” paper. <https://arxiv.org/pdf/2404.05427>
+- **221,63 jours-homme pour 50 $**, contre 111 000 $ en méthode traditionnelle.
 
-Et pour 26.67%
+### Potentiel d'amélioration
 
-221.63 man day
-for 50$
-instead of 111K$*
+#### Exécutions multiples
 
-détail du calcul :
-Cost :
+Les taux de réussite peuvent être améliorés en multipliant les tentatives. Comme le montre le Pass@k, plusieurs exécutions d'une même issue peuvent significativement augmenter les performances globales.
 
-- 0.15 $ per issue (Sonnet 3.5 LLM api)
-- few $ for the agent execution infrastructure
-- 300 issue => ~50$
-Expected benefits:
-- 2.77 man day / issue (avg)
-- 26.67% *2.77* 300 = 221.63 man days
-- 50$ / 221.63 ~ 0.23 $ cost per man day
-- 2-10 min / issue
+#### Amélioration de la qualité du feedback
 
-#### Potentiel d'amélioration grâce aux executions multiples
+Un autre levier d'amélioration réside dans la qualité du feedback fourni à l'agent pendant la résolution des issues. En intégrant une approche "test-first", nous pensons que ces taux de réussite pourraient encore augmenter. Le feedback en continu permettrait à l'agent de corriger ses erreurs plus efficacement, améliorant ainsi la qualité et la pertinence des PR générées.
 
-En réalité, ces taux peuvent être améliorés de manière sygnificative sans améliorer l'agent ou le modèle qu'il y a derrière. Il suffit de relancer plusieurs fois (et là on explique l'impact du Pass@k) qu'on avait introduit avant en citant la source ci-dessous
+### Vers une compréhension plus approfondie : Comment fonctionnent réellement les agents de codage ?
 
-Extrait de <https://arxiv.org/pdf/2405.15793> :
-B.5 Performance Variance and Pass@k Rate
-Since running SWE-agent on SWE-bench can be rather expensive, we perform, all results, unless
-otherwise stated, are reported using a pass@1 metric (% Resolved). However, we also test our main
-SWE-agent configuration for a higher number of runs to test the variance and pass@k performance
-for k ∈ {3, 6}. These results are shown in Table 10, suggesting that average performance variance is
-relatively low, though per-instance resolution can change considerably.
-Table 10: Performance for 6 separate runs of SWE-agent with GPT-4 on SWE-bench Lite. The %
-Resolved rate for each individual run is shown in the first table, and the pass@k rate in the second.
-SWE-bench Lite
-Run 1 Run 2 Run 3 Run 4 Run 5 Run 6 Avg.
-Resolve % 17.33 18.00 18.00 18.67 17.33 18.33 17.940.49
-Pass@1 Pass@2 Pass@3 Pass@4 Pass@5 Pass@6
-Pass@k 17.94 23.89 27.35 29.67 31.33 32.67
-
-#### Potentiel d'amélioration en améliorant la qualité du feedback dont dispose l'agent pendant la résolution
-
-En réalité nous pensons, que ce taux peux être encore amélioré en l'état
+Les capacités actuelles des agents de codage ouvrent de nouvelles perspectives pour l'automatisation de l'ingénierie logicielle, mais elles soulèvent aussi des questions sur la manière dont ces technologies s'intègrent dans nos pratiques existantes. Pour approfondir notre exploration, nous allons maintenant examiner comment ces agents fonctionnent en détail et comment ils peuvent être optimisés pour un impact maximal.
 
 ## Démonstration en Direct (## Live Demo)
 
