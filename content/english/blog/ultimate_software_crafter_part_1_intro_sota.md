@@ -81,7 +81,7 @@ SWE-bench est une référence pour évaluer les performances des agents de codag
 
 ![SWE-bench, benchmarking protocol](/images/blog/swe-bench-protocol.png)
 
-**SWE-bench Full** Ce dataset contient 2294 tâches à résoudre (GitHub issues) sélectionées depuis 12 des dépôts GitHub python les plus populaires (Django, flask, matplotlib, requests, scikit learn, sympy…). Les repos ciblés répondaient aux critères suivants : des guidelines de contrinutions claires, une bonne couverture de tests, globalement bien maintenu (avec des commits réguliers).
+**SWE-bench Full :** Ce dataset contient 2294 tâches à résoudre (GitHub issues) sélectionées depuis 12 des dépôts GitHub python les plus populaires (Django, flask, matplotlib, requests, scikit learn, sympy…). Les repos ciblés répondaient aux critères suivants : des guidelines de contrinutions claires, une bonne couverture de tests, globalement bien maintenu (avec des commits réguliers).
 
 **SWE-bench Lite** est un dataset allégé, conçu pour se concentrer sur des issues plus ciblées et éliminer les variables qui pourraient biaiser les résultats. Cette version exclut, entre autres, les issues avec des dépendances externes ou des images, celles dont la description est trop courte (moins de 40 mots), ainsi que les PR touchant à plusieurs fichiers. Avec 300 issues sélectionnées pour leur clarté et leur maintenabilité, SWE-bench Lite fournit un cadre plus précis (et surtout plus économique) pour évaluer la performance des agents dans un environnement contrôlé.
 
@@ -102,19 +102,33 @@ Les agents actuels montrent des lacunes lorsqu'ils doivent traiter des issues n�
 - Le travail après la PR (revue, tests, déploiement, monitoring…)
 - Le travail avant l'issue (discussions, formulation des besoins…)
 
-#### Opportunités 🚧
+Et c'est d'ailleus pour cette raison que nous préférons parler d'agents autonomes de codage plutôt que d'agents autonomes de développement.
 
-Malgré ces limitations, les agents autonomes présentent un potentiel économique intéressant :
+#### Opportunités
 
-- **149,58 jours-homme pour 600 $**, contre 75 000 $ en méthode traditionnelle.
+Malgré ces limitations, les agents autonomes présentent un potentiel économique intéressant.
 
-Détails :
+Si l'on se met dans la peau d'un manager, et que l'on décide de quantifier le gains que l'on pourrait réaliser en utilisant ces agents, on pourrait arriver à des chiffres impressionnants :
 
-- Coût : < 2 $ par issue (API GPT-4o) + infrastructure d'exécution.
-- Résultats : 54 issues résolues sur 300, soit 149,58 jours-homme.
-- Coût moyen par jour-homme : 4,01 $.
+- **L'équivalent de 149,58 jours-homme de code pour 600 $**, contre 75 000 $ en méthode traditionnelle.
 
-Les résultats pour SWE-bench Lite sont encore plus impressionnants :
+Pour arriver à ce chiffre, nous avons pris en compte les hypothèses suivantes :
+
+- On intégre un agent autonome de codage (GPT-4o) dans le processus de développement avec un taux de résolution de 18%.
+- On tente systématiquement de résoudre chaque issue 1 fois (1 seule execution = Pass@1).
+- Coût :
+  - < 2 $ par issue (API GPT-4o) + infrastructure d'exécution.
+  - Cout total : 600 $ pour 300 issues.
+- Résultats :
+  - 54 issues résolues sur 300, soit l'équivalent de 149,58 jours-homme de codage qui ont été automatisés. (*[Une étude](https://arxiv.org/pdf/2404.05427) à montré que les développeurs mettent en moyenne 2,77 jours pour résoudre une issue faisant partie du SWE-Bench-Lite dataset*).
+  - Coût moyen de l'équivalent jour-homme automatisé : 4,01 $.
+  - Durée de résolution moyenne par issue par l'agent: 2 à 10 min.
+
+> It costs on average ~2.77 days for developers to create pull requests… [samples from SWE-Bench-Lite dataset]
+>
+> Source: “AutoCodeRover: Autonomous Program Improvement” paper. <https://arxiv.org/pdf/2404.05427>
+
+Ces résultats peuvent être bien plus impressionnants si l'on considère des agents plus performants. Par exemple, Moatless Tools avec Claude 3.5 Sonnet a atteint 26,67 % de réussite sur SWE-bench Lite, ce qui pourrait se traduire par :
 
 - **221,63 jours-homme pour 50 $**, contre 111 000 $ en méthode traditionnelle.
 
@@ -124,10 +138,16 @@ Les résultats pour SWE-bench Lite sont encore plus impressionnants :
 
 Les taux de réussite peuvent être améliorés en multipliant les tentatives. Comme le montre le Pass@k, plusieurs exécutions d'une même issue peuvent significativement augmenter les performances globales.
 
+![ Performance for 6 separate runs of SWE-agent with GPT-4 on SWE-bench Lite. The %Resolved rate for each individual run is shown in the first table, and the pass@k rate in the second](/images/blog/swe-agent-performance-variance-pass-k.png)
+
+Il est vrai que cette approche peut poser des défis techniques et nécessiter une gestion complexe des ressources, surtout en ce qui concerne le temps de calcul et les infrastructures nécessaires pour supporter plusieurs exécutions simultanées. Cependant, elle reste une piste à explorer pour améliorer les performances des agents. Et même si elle paraît coûteuse, le potentiel d'économie reste très intéressant.
+
 #### Amélioration de la qualité du feedback
 
 Un autre levier d'amélioration réside dans la qualité du feedback fourni à l'agent pendant la résolution des issues. En intégrant une approche "test-first", nous pensons que ces taux de réussite pourraient encore augmenter. Le feedback en continu permettrait à l'agent de corriger ses erreurs plus efficacement, améliorant ainsi la qualité et la pertinence des PR générées.
 
-### Vers une compréhension plus approfondie : Comment fonctionnent réellement les agents de codage ?
+### On automatise tout ? Pas si vite
 
 Les capacités actuelles des agents de codage ouvrent de nouvelles perspectives pour l'automatisation de l'ingénierie logicielle, mais elles soulèvent aussi des questions sur la manière dont ces technologies s'intègrent dans nos pratiques existantes. Pour approfondir notre exploration, nous allons maintenant examiner comment ces agents fonctionnent en détail et comment ils peuvent être optimisés pour un impact maximal.
+
+Néanmoins, nous tenons à souligner que le calcul de l'économie réalisée par l'utilisation de ces agents est une simplification. En effet, il ne prend pas en compte les coûts indirects, tels que la qualité du code généré, la maintenance, la régression, la sécurité, etc. Ces coûts indirects peuvent être significatifs et doivent être pris en compte dans toute évaluation sérieuse.
