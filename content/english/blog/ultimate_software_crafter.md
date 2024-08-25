@@ -1,9 +1,14 @@
 ---
 title: "Ultimate Software Crafter"
+meta_title: "Quel est l'état de l'art des agents autonome de développement ?"
 date: 2024-06-25T22:48:13+02:00
 draft: false
 authors: ["Wassel Alazhar", "Naji Alazhar"]
 ---
+
+> Cet article fait suite à la présentation du même titre **Ultimate Software Crafter** que nous (Naji Alazhar et Wassel Alazhar) avons donnée le 25 juin 2024 au Meetup Crafting Data Science. [Cette présentation](https://speakerdeck.com/jcraftsman/the-ultimate-software-crafter-meetup-crafting-data-science) traîte de l'état de l'art des agents autonomes de développement logiciel et de leur fonctionnement.
+
+{{< toc >}}
 
 **"Ultimate Software Crafter"**—un titre qui résonne avec une touche de provocation. L'artisanat logiciel serait-il en voie de disparition ?
 
@@ -26,11 +31,11 @@ Heureusement, des alternatives open-source commencent à voir le jour, offrant u
 <!-- markdownlint-disable MD033 -->
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; max-width: 100%; margin: 0 auto;">
-  <div style="flex: 1; min-width: 300px; max-width: 40%;">
+  <div style="flex: 1; min-width: 300px; max-width: 42%;">
     <blockquote class="twitter-tweet" data-dnt="true">
       <p lang="en" dir="ltr">
         Today we&#39;re excited to introduce Devin, the first AI software engineer.<br><br>
-        Devin is the new state-of-the-art on the SWE-Bench coding benchmark, has successfully passed practical engineering interviews from leading AI companies, and has even completed real jobs on Upwork… <a href="https://t.co/ladBicxEat">pic.twitter.com/ladBicxEat</a>
+        Devin is the new state-of-the-art on the SWE-bench coding benchmark, has successfully passed practical engineering interviews from leading AI companies, and has even completed real jobs on Upwork… <a href="https://t.co/ladBicxEat">pic.twitter.com/ladBicxEat</a>
       </p>
       &mdash; Cognition (@cognition_labs)
       <a href="https://twitter.com/cognition_labs/status/1767548763134964000?ref_src=twsrc%5Etfw">March 12, 2024</a>
@@ -38,7 +43,7 @@ Heureusement, des alternatives open-source commencent à voir le jour, offrant u
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 
-  <div style="flex: 1; min-width: 300px; max-width: 40%;">
+  <div style="flex: 1; min-width: 300px; max-width: 42%;">
     <blockquote class="twitter-tweet">
       <p lang="en" dir="ltr">
         Devin (named “the world’s first AI engineer” from the start) and looked to me it’s far more marketing and hype than reality.<br><br>
@@ -60,28 +65,32 @@ Nous entrerons maintenant dans le vif du sujet en analysant les capacités actue
 
 Quand nous parlons d'agent autonome de codage, nous faisons référence à un programme capable de résoudre une tâche en toute autonomie et de soumettre une Pull Request (PR) à partir d'une demande de changement (issue, tâche, ou User Story) fournie sous forme de texte ou provenant d'un outil de gestion comme GitHub Issues, Jira, ou Notion.
 
-Répondre à la question "Quelles sont les capacités actuelles des agents de codage ?" est cependant complexe pour plusieurs raisons. Les performances de ces agents varient considérablement en fonction des tâches, des environnements, et des modèles sous-jacents utilisés. De plus, les benchmarks et les études montrent des résultats en constante évolution, rendant difficile une évaluation stable. Enfin, les contextes d'application, les types de problèmes résolus, et la manière dont ces agents sont intégrés aux processus existants influencent également leurs capacités réelles.
+Répondre à la question "Quelles sont les capacités actuelles des agents de codage ?" est cependant complexe pour plusieurs raisons. Les performances de ces agents varient considérablement en fonction des tâches, des environnements, et des modèles sous-jacents utilisés. De plus, les benchmarks et les études montrent des résultats en constante évolution, rendant difficile une évaluation stable. Enfin, les contextes d'application, les types de problèmes résolus et la manière dont ces agents sont intégrés aux processus existants influencent également leurs capacités réelles.
 
-Pour tenter de répondre à cette question, nous nous appuyons sur deux études récentes qui, malgré leurs limites et biais, restent parmi les sources les plus sérieuses disponibles :
+Pour tenter de répondre à cette question, nous nous appuyons sur deux études récentes qui, malgré quelques limites et biais, restent parmi les sources les plus sérieuses disponibles :
 
 1. **SWE-Agent: Agent-Computer Interfaces Enable Automated Software Engineering** ([Lire sur arXiv](https://arxiv.org/abs/2405.15793))
-2. **SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?** ([Lire sur arXiv](https://arxiv.org/abs/2310.06770))
+2. **SWE-bench: Can Language Models Resolve Real-World GitHub Issues?** ([Lire sur arXiv](https://arxiv.org/abs/2310.06770))
 
-### SWE-Bench et SWE-Bench Lite : Benchmarking et résultats
+### Benchmarking et résultats
 
-SWE-Bench est une référence pour évaluer les performances des agents de codage. Ce benchmark se base sur 2294 issues issues de 12 des dépôts GitHub les plus populaires. Le protocole est rigoureux : l'agent reçoit le commit parent d'une PR résolue et doit proposer une nouvelle PR qui sera validée en exécutant tous les tests associés.
+SWE-bench est une référence pour évaluer les performances des agents de codage. Le protocole est rigoureux : l'agent reçoit le commit parent d'une PR résolue et doit proposer une nouvelle PR qui sera validée en exécutant tous les tests associés. Ce processus permet de vérifier la capacité de l'agent à résoudre les problèmes de manière autonome, sans engendrer de régressions.
 
-**Protocole de SWE-Bench** : Pour chaque issue, l'agent reçoit le commit parent de la PR déjà résolue. L'agent doit générer une nouvelle PR, qui est ensuite validée par l'exécution de tous les tests liés à cette PR. Ce processus permet de vérifier la capacité de l'agent à résoudre les problèmes de manière autonome, en respectant les contraintes de qualité du code et de test.
+![SWE-bench, benchmarking protocol](/images/blog/swe-bench-protocol.png)
 
-**SWE-Bench Lite** est une version allégée du benchmark initial, conçue pour se concentrer sur des issues plus ciblées et éliminer les variables qui pourraient biaiser les résultats. Cette version exclut, entre autres, les issues avec des dépendances externes ou des images, celles dont la description est trop courte (moins de 40 mots), ainsi que les PR touchant à plusieurs fichiers. Avec 300 issues sélectionnées pour leur clarté et leur maintenabilité, SWE-Bench Lite fournit un cadre plus précis pour évaluer la performance des agents dans un environnement contrôlé.
+**SWE-bench Full** Ce dataset contient 2294 tâches à résoudre (GitHub issues) sélectionées depuis 12 des dépôts GitHub python les plus populaires (Django, flask, matplotlib, requests, scikit learn, sympy…). Les repos ciblés répondaient aux critères suivants : des guidelines de contrinutions claires, une bonne couverture de tests, globalement bien maintenu (avec des commits réguliers).
 
-Les résultats obtenus sont impressionnants, mais ils doivent être interprétés avec précaution. L'évolution rapide des performances, comme illustré dans le graphique ci-dessus, montre une amélioration continue des taux de résolution. Cependant, tous les résultats ne sont pas égaux. Par exemple, AutoCodeRover avec GPT-4 a atteint 19 % de réussite, mais cela inclut trois exécutions distinctes (Pass@3), ce qui peut être trompeur. De plus, cette approche est plus lente que d'autres, comme SWE-Agent.
+**SWE-bench Lite** est un dataset allégé, conçu pour se concentrer sur des issues plus ciblées et éliminer les variables qui pourraient biaiser les résultats. Cette version exclut, entre autres, les issues avec des dépendances externes ou des images, celles dont la description est trop courte (moins de 40 mots), ainsi que les PR touchant à plusieurs fichiers. Avec 300 issues sélectionnées pour leur clarté et leur maintenabilité, SWE-bench Lite fournit un cadre plus précis (et surtout plus économique) pour évaluer la performance des agents dans un environnement contrôlé.
 
-Dans cet environnement de données souvent complexes, nous recommandons de se concentrer sur des résultats transparents et vérifiés, notamment ceux obtenus en open-source, avec une seule exécution (Pass@1). À ce jour, ces taux atteignent 18,13 % pour le benchmark standard et 26,67 % pour SWE-Bench Lite.
+![SWE-bench, The evolution of agent's issues resolution performance](/images/blog/swe-bench-evolution.png)
 
-**Remarque importante** : OpenAI s'est également intéressé à ce domaine, proposant [SWE-Bench Verified](https://openai.com/index/introducing-swe-bench-verified/), un ensemble de 500 problèmes validés par des ingénieurs logiciels, offrant ainsi un cadre d'évaluation encore plus rigoureux.
+Les résultats obtenus peuvent impressionner, mais ils doivent être interprétés avec précaution. L'évolution rapide des performances, comme illustré dans le graphique ci-dessus, montre une amélioration continue des taux de résolution. Cependant, tous les résultats ne sont pas toujours comparables. Par exemple, AutoCodeRover avec GPT-4 a atteint 19 % de réussite, mais cela inclut trois exécutions distinctes (Pass@3) et le temps de résolution est bien plus lent que d'autres agents.
 
-### Opportunités et limitations
+Dans cet environnement de données souvent complexes, nous recommandons de se concentrer sur des résultats transparents et vérifiés, notamment ceux obtenus en open-source, avec une seule exécution (Pass@1). À ce jour, ces taux atteignent 18,13 % pour le benchmark standard et 26,67 % pour SWE-bench Lite.
+
+> OpenAI s'est également intéressé à ce domaine, proposant [SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/), un ensemble de 500 problèmes validés par des ingénieurs logiciels, offrant ainsi un cadre d'évaluation encore plus rigoureux.
+
+### Limitations et Opportunités
 
 #### Limitations
 
@@ -90,7 +99,7 @@ Les agents actuels montrent des lacunes lorsqu'ils doivent traiter des issues n�
 - Le travail après la PR (revue, tests, déploiement, monitoring…)
 - Le travail avant l'issue (discussions, formulation des besoins…)
 
-#### Opportunités
+#### Opportunités 🚧
 
 Malgré ces limitations, les agents autonomes présentent un potentiel économique intéressant :
 
@@ -102,7 +111,7 @@ Détails :
 - Résultats : 54 issues résolues sur 300, soit 149,58 jours-homme.
 - Coût moyen par jour-homme : 4,01 $.
 
-Les résultats pour SWE-Bench Lite sont encore plus impressionnants :
+Les résultats pour SWE-bench Lite sont encore plus impressionnants :
 
 - **221,63 jours-homme pour 50 $**, contre 111 000 $ en méthode traditionnelle.
 
@@ -163,7 +172,7 @@ issue marshmallow:
 ### Publications académiques et articles
 
 1. **SWE-Agent: Agent-Computer Interfaces Enable Automated Software Engineering** - [Lire sur arXiv](https://arxiv.org/abs/2405.15793)
-2. **SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?** - [Lire sur arXiv](https://arxiv.org/abs/2310.06770)
+2. **SWE-bench: Can Language Models Resolve Real-World GitHub Issues?** - [Lire sur arXiv](https://arxiv.org/abs/2310.06770)
 3. **AutoCodeRover: Autonomous Program Improvement** - [Lire sur arXiv](https://arxiv.org/pdf/2404.05427)
 4. **Canon TDD, by Kent Beck** - [Lire sur Tidy First](https://tidyfirst.substack.com/p/canon-tdd)
 5. **ReAct: Synergizing Reasoning and Acting in Language Models** - [Lire sur arXiv](https://arxiv.org/abs/2210.03629)
