@@ -2,7 +2,7 @@
 title: "Ultimate Software Crafter"
 date: 2024-06-25T22:48:13+02:00
 draft: false
-authors: Wassel Alazhar, Naji Alazhar
+authors: ["Wassel Alazhar", "Naji Alazhar"]
 ---
 
 **"Ultimate Software Crafter"**—un titre qui résonne avec une touche de provocation. L'artisanat logiciel serait-il en voie de disparition ?
@@ -17,9 +17,42 @@ Suivez-nous dans cette exploration où l'avenir du métier se dessine.
 
 ## Un Sujet Brûlant
 
-L'agitation autour des agents autonomes de codage est palpable. Les annonces se succèdent, alimentées par des promesses parfois démesurées. Devin, par exemple, s'est fait connaître comme le "premier ingénieur logiciel IA", mais a rapidement sombré dans la controverse. Les attentes étaient énormes, mais les résultats bien en deçà. D'autres, comme GitHub Copilot Workspace, n'ont pas échappé au même sort, accumulant les démos ratées qui laissent le public sceptique. Ces agents sont encore en phase de développement, loin d'être prêts pour une adoption massive. On nous parle d'une révolution imminente, mais pour l'instant, seuls des produits fermés et des listes d'attente sont disponibles.
+L'agitation autour des agents autonomes de codage est palpable. Les annonces se succèdent, alimentées par des promesses parfois démesurées. [Devin](https://x.com/cognition_labs/status/1767548763134964000), par exemple, s'est fait connaître comme le "premier ingénieur logiciel IA", mais a rapidement [sombré dans la controverse](https://x.com/GergelyOrosz/status/1779035184978866332).
 
-Heureusement, des alternatives open-source commencent à voir le jour, offrant un peu plus de transparence et de compréhension. Parmi elles, SWE-Agent se distingue, montrant que tout n'est pas qu'une question de marketing. Mais la tendance actuelle ne va pas s'atténuer de sitôt. Les débats autour de ces technologies, entre espoir et désillusion, continuent d'alimenter la conversation. Dans ce contexte bouillonnant, il devient crucial de démêler le vrai du faux et d'explorer ce dont ces agents sont vraiment capables.
+Les attentes étaient énormes, mais les résultats bien en deçà. D'autres, comme [GitHub Copilot Workspace](https://x.com/github/status/1785006787755721210), n'ont pas échappé au même sort, accumulant [les démos ratées](https://www.youtube.com/watch?v=75Hv0RUFIrQ) qui laissent le public sceptique. Ces agents sont encore en phase de développement, loin d'être prêts pour une adoption massive. On nous parle d'une révolution imminente, mais jusqu'à il n'y a pas très longtemps, seuls des produits fermés et des listes d'attente étaient disponibles.
+
+Heureusement, des alternatives open-source commencent à voir le jour, offrant un peu plus de transparence et de compréhension. Parmi elles, [SWE-Agent](https://github.com/princeton-nlp/SWE-agent) se distingue, montrant que tout n'est pas qu'une question de marketing. Mais la tendance actuelle ne va pas s'atténuer de sitôt (avec [des modèles LLMs plus performant dans la génération de code](https://x.com/alexalbert__/status/1803804677701869748) et de plus en plus d'[alternatives open-sources avec des approches plus crédibles](https://www.tiktok.com/@steve8708/video/7382315491341126955)). Les débats autour de ces technologies, entre espoir et désillusion, continuent d'alimenter la conversation. Dans ce contexte bouillonnant, il devient crucial de démêler le vrai du faux et d'explorer ce dont ces agents sont vraiment capables.
+
+<!-- markdownlint-disable MD033 -->
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; max-width: 100%; margin: 0 auto;">
+  <div style="flex: 1; min-width: 300px; max-width: 40%;">
+    <blockquote class="twitter-tweet" data-dnt="true">
+      <p lang="en" dir="ltr">
+        Today we&#39;re excited to introduce Devin, the first AI software engineer.<br><br>
+        Devin is the new state-of-the-art on the SWE-Bench coding benchmark, has successfully passed practical engineering interviews from leading AI companies, and has even completed real jobs on Upwork… <a href="https://t.co/ladBicxEat">pic.twitter.com/ladBicxEat</a>
+      </p>
+      &mdash; Cognition (@cognition_labs)
+      <a href="https://twitter.com/cognition_labs/status/1767548763134964000?ref_src=twsrc%5Etfw">March 12, 2024</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div style="flex: 1; min-width: 300px; max-width: 40%;">
+    <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">
+        Devin (named “the world’s first AI engineer” from the start) and looked to me it’s far more marketing and hype than reality.<br><br>
+        But even I didn’t assume how their own staged video would blatantly lie. It does. A software engineer looked closer. Damning:
+        <a href="https://t.co/iKu8yfuFbA">https://t.co/iKu8yfuFbA</a>
+      </p>
+      &mdash; Gergely Orosz (@GergelyOrosz)
+      <a href="https://twitter.com/GergelyOrosz/status/1779035184978866332?ref_src=twsrc%5Etfw">April 13, 2024</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</div>
+
+<!-- markdownlint-enable MD033 -->
 
 Nous entrerons maintenant dans le vif du sujet en analysant les capacités actuelles des agents de codage autonomes. Que peuvent-ils réellement accomplir ?
 
@@ -145,8 +178,8 @@ issue marshmallow:
 2. **Analyse critique de Devin par Gergely Orosz** - [Twitter](https://twitter.com/GergelyOrosz/status/1779035184978866332)
 3. **Annonce de GitHub Copilot Workspace** - [Twitter](https://x.com/github/status/1785006787755721210)
 4. **Vidéo YouTube sur les démos ratées de GitHub Copilot** - [YouTube](https://www.youtube.com/watch?v=75Hv0RUFIrQ)
-5. **Vidéo TikTok sur l'approche Test-First utilisée par Micro Agent** - [TikTok](https://www.tiktok.com/@steve8708/video/7382315491341126955)
-6. **Tweet d'Alex Albert sur la tendance du code généré par LLMs** - [Twitter](https://x.com/alexalbert__/status/1803804677701869748)
+5. **Tweet d'Alex Albert sur la tendance du code généré par LLMs** - [Twitter](https://x.com/alexalbert__/status/1803804677701869748)
+6. **Vidéo TikTok sur l'approche Test-First utilisée par Micro Agent** - [TikTok](https://www.tiktok.com/@steve8708/video/7382315491341126955)
 7. **Alberto Brandolini sur l'importance de la compréhension des développeurs** - [Twitter](https://twitter.com/ziobrando)
 8. **Gregor Hohpe sur les problèmes inutiles en informatique d'entreprise** - [Twitter](https://x.com/ghohpe/status/1782429303948583284)
 9. **Derek Comartin sur les développeurs et les goulots d'étranglement du codage** - [Twitter](https://x.com/codeopinion/status/1601987262559944705)
