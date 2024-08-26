@@ -79,13 +79,13 @@ Pour tenter de répondre à cette question, nous nous appuyons sur deux études 
 
 SWE-bench est une référence pour évaluer les performances des agents de codage. Le protocole est rigoureux : l'agent reçoit le commit parent d'une PR résolue et doit proposer une nouvelle PR qui sera validée en exécutant tous les tests associés. Ce processus permet de vérifier la capacité de l'agent à résoudre les problèmes de manière autonome, sans engendrer de régressions.
 
-![SWE-bench, benchmarking protocol](/images/blog/swe-bench-protocol.png)
+![SWE-bench, benchmarking protocol](swe-bench-protocol.png)
 
 **SWE-bench Full :** Ce dataset contient 2294 tâches à résoudre (GitHub issues) sélectionées depuis 12 des dépôts GitHub python les plus populaires (Django, flask, matplotlib, requests, scikit learn, sympy…). Les repos ciblés répondaient aux critères suivants : des guidelines de contrinutions claires, une bonne couverture de tests, globalement bien maintenu (avec des commits réguliers).
 
 **SWE-bench Lite** est un dataset allégé, conçu pour se concentrer sur des issues plus ciblées et éliminer les variables qui pourraient biaiser les résultats. Cette version exclut, entre autres, les issues avec des dépendances externes ou des images, celles dont la description est trop courte (moins de 40 mots), ainsi que les PR touchant à plusieurs fichiers. Avec 300 issues sélectionnées pour leur clarté et leur maintenabilité, SWE-bench Lite fournit un cadre plus précis (et surtout plus économique) pour évaluer la performance des agents dans un environnement contrôlé.
 
-![SWE-bench, The evolution of agent's issues resolution performance](/images/blog/swe-bench-evolution.png)
+![SWE-bench, The evolution of agent's issues resolution performance](swe-bench-evolution.png)
 
 Les résultats obtenus peuvent impressionner, mais ils doivent être interprétés avec précaution. L'évolution rapide des performances, comme illustré dans le graphique ci-dessus, montre une amélioration continue des taux de résolution. Cependant, tous les résultats ne sont pas toujours comparables. Par exemple, AutoCodeRover avec GPT-4 a atteint 19 % de réussite, mais cela inclut trois exécutions distinctes (Pass@3) et le temps de résolution est bien plus lent que d'autres agents.
 
@@ -138,7 +138,7 @@ Ces résultats peuvent être bien plus impressionnants si l'on considère des ag
 
 Les taux de réussite peuvent être améliorés en multipliant les tentatives. Comme le montre le Pass@k, plusieurs exécutions d'une même issue peuvent significativement augmenter les performances globales.
 
-![ Performance for 6 separate runs of SWE-agent with GPT-4 on SWE-bench Lite. The %Resolved rate for each individual run is shown in the first table, and the pass@k rate in the second](/images/blog/swe-agent-performance-variance-pass-k.png)
+![ Performance for 6 separate runs of SWE-agent with GPT-4 on SWE-bench Lite. The %Resolved rate for each individual run is shown in the first table, and the pass@k rate in the second](swe-agent-performance-variance-pass-k.png)
 
 Il est vrai que cette approche peut poser des défis techniques et nécessiter une gestion complexe des ressources, surtout en ce qui concerne le temps de calcul et les infrastructures nécessaires pour supporter plusieurs exécutions simultanées. Cependant, elle reste une piste à explorer pour améliorer les performances des agents. Et même si elle paraît coûteuse, le potentiel d'économie reste très intéressant.
 
