@@ -2,7 +2,7 @@
 title: "Ultimate Software Crafter - Partie 4 - Impacts et Discussion"
 meta_title: "Quel est l'état de l'art des agents autonome de développement ?"
 date: 2024-06-25T22:48:13+02:00
-draft: false
+draft: true
 author: "Wassel Alazhar"
 authors: ["Wassel Alazhar", "Naji Alazhar"]
 categories: ["Software Engineering", "AI", "Automation"]
