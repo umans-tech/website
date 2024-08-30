@@ -6,10 +6,12 @@ draft: false
 author: "Wassel Alazhar"
 authors: ["Wassel Alazhar", "Naji Alazhar"]
 categories: ["Software Engineering", "AI", "Automation"]
-tags: ["LLM", "BENCHMARK", "SWE-Agent", "SWE-bench", "AI", "Automation", "Software Engineering", "Test-Driven Development", "TDD"]
+tags: ["LLM", "BENCHMARK", "SWE-agent", "SWE-bench", "AI", "Automation", "Software Engineering", "Test-Driven Development", "TDD"]
 ---
 
 > Cet article fait suite à la présentation du même titre **Ultimate Software Crafter** que nous (Naji Alazhar et Wassel Alazhar) avons donnée le 25 juin 2024 au Meetup Crafting Data Science. [Cette présentation](https://speakerdeck.com/jcraftsman/the-ultimate-software-crafter-meetup-crafting-data-science) traîte de l'état de l'art des agents autonomes de développement logiciel et de leur fonctionnement.
+>
+> Cet article est le premier d'une série de quatre articles qui démystifient ces agents et explorent leurs impacts potentiels sur l'automatisation du développement logiciel.
 
 {{< toc >}}
 
@@ -19,7 +21,7 @@ Depuis des années, les développeurs s'efforcent de rehausser les standards de 
 
 Cet article se propose de démystifier ces agents, de décortiquer leur fonctionnement et de réfléchir à leur impact potentiel sur notre métier.
 
-Nous explorerons également comment des techniques éprouvées, comme le Test-Driven Development (TDD), peuvent être appliquées à ces agents pour transformer le développement logiciel automatisé.
+Dans cette série d'article, nous explorerons également comment des techniques éprouvées, comme le Test-Driven Development (TDD), peuvent être appliquées à ces agents pour transformer le développement logiciel automatisé.
 
 Suivez-nous dans cette exploration où l'avenir du métier se dessine.
 
@@ -27,9 +29,9 @@ Suivez-nous dans cette exploration où l'avenir du métier se dessine.
 
 L'agitation autour des agents autonomes de codage est palpable. Les annonces se succèdent, alimentées par des promesses parfois démesurées. [Devin](https://x.com/cognition_labs/status/1767548763134964000), par exemple, s'est fait connaître comme le "premier ingénieur logiciel IA", mais a rapidement [sombré dans la controverse](https://x.com/GergelyOrosz/status/1779035184978866332).
 
-Les attentes étaient énormes, mais les résultats bien en deçà. D'autres, comme [GitHub Copilot Workspace](https://x.com/github/status/1785006787755721210), n'ont pas échappé au même sort, accumulant [les démos ratées](https://www.youtube.com/watch?v=75Hv0RUFIrQ) qui laissent le public sceptique. Ces agents sont encore en phase de développement, loin d'être prêts pour une adoption massive. On nous parle d'une révolution imminente, mais jusqu'à il n'y a pas très longtemps, seuls des produits fermés et des listes d'attente étaient disponibles.
+Les attentes étaient énormes, mais les résultats bien en deçà. D'autres, comme [GitHub Copilot Workspace](https://x.com/github/status/1785006787755721210), n'ont pas échappé au même sort, accumulant [les démos ratées](https://www.youtube.com/watch?v=75Hv0RUFIrQ) qui laissent le public sceptique. Ces agents sont encore en phase de développement, loin d'être prêts pour une adoption massive. On nous annonce une révolution imminente, mais jusqu'à récemment, seuls des produits fermés et des listes d'attente étaient disponibles.
 
-Heureusement, des alternatives open-source commencent à voir le jour, offrant un peu plus de transparence et de compréhension. Parmi elles, [SWE-Agent](https://github.com/princeton-nlp/SWE-agent) se distingue, montrant que tout n'est pas qu'une question de marketing. Mais la tendance actuelle ne va pas s'atténuer de sitôt (avec [des modèles LLMs plus performant dans la génération de code](https://x.com/alexalbert__/status/1803804677701869748) et de plus en plus d'[alternatives open-sources avec des approches plus crédibles](https://www.tiktok.com/@steve8708/video/7382315491341126955)). Les débats autour de ces technologies, entre espoir et désillusion, continuent d'alimenter la conversation. Dans ce contexte bouillonnant, il devient crucial de démêler le vrai du faux et d'explorer ce dont ces agents sont vraiment capables.
+Heureusement, des alternatives open-source commencent à voir le jour, offrant un peu plus de transparence et de compréhension. Parmi elles, [SWE-agent](https://github.com/princeton-nlp/SWE-agent) se distingue, montrant que tout n'est pas qu'une question de marketing. Mais la tendance actuelle ne va pas s'atténuer de sitôt (avec [des modèles LLMs plus performant dans la génération de code](https://x.com/alexalbert__/status/1803804677701869748) et de plus en plus d'[alternatives open-sources avec des approches plus crédibles](https://github.com/aorwall/moatless-tools)). Les débats autour de ces technologies, entre espoir et désillusion, continuent d'alimenter la conversation. Dans ce contexte bouillonnant, il devient crucial de démêler le vrai du faux et d'explorer ce dont ces agents sont vraiment capables.
 
 <!-- markdownlint-disable MD033 -->
 
@@ -72,7 +74,7 @@ Répondre à la question "Quelles sont les capacités actuelles des agents de co
 
 Pour tenter de répondre à cette question, nous nous appuyons sur deux études récentes qui, malgré quelques limites et biais, restent parmi les sources les plus sérieuses disponibles :
 
-1. **SWE-Agent: Agent-Computer Interfaces Enable Automated Software Engineering** ([Lire sur arXiv](https://arxiv.org/abs/2405.15793))
+1. **SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering** ([Lire sur arXiv](https://arxiv.org/abs/2405.15793))
 2. **SWE-bench: Can Language Models Resolve Real-World GitHub Issues?** ([Lire sur arXiv](https://arxiv.org/abs/2310.06770))
 
 ### Benchmarking et résultats
@@ -91,62 +93,69 @@ Les résultats obtenus peuvent impressionner, mais ils doivent être interprét�
 
 Dans cet environnement de données souvent complexes, nous recommandons de se concentrer sur des résultats transparents et vérifiés, notamment ceux obtenus en open-source, avec une seule exécution (Pass@1). À ce jour, ces taux atteignent 18,13 % pour le benchmark standard et 26,67 % pour SWE-bench Lite.
 
-> OpenAI s'est également intéressé à ce domaine, proposant [SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/), un ensemble de 500 problèmes validés par des ingénieurs logiciels, offrant ainsi un cadre d'évaluation encore plus rigoureux.
+> OpenAI s'est également intéressé à ce domaine, proposant [SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/), un sous-ensemble de 500 problèmes qui ont été validés par des ingénieurs logiciels, offrant ainsi un cadre d'évaluation encore plus rigoureux.
 
 ### Limitations et Opportunités
 
 #### Limitations
 
-Les agents actuels montrent des lacunes lorsqu'ils doivent traiter des issues nécessitant peu de modifications ou lorsque les descriptions sont trop concises. De plus, notre analyse se concentre uniquement sur la phase allant de l'issue à la PR, excluant ainsi :
+Les agents actuels ont du mal dès qu'il s'agit de gérer plusieurs modifications ou de comprendre des descriptions trop succinctes. Et puis, notre focus se limite à l'étape entre l'issue et la PR, sans toucher à :
 
-- Le travail après la PR (revue, tests, déploiement, monitoring…)
-- Le travail avant l'issue (discussions, formulation des besoins…)
+- Ce qui vient après la PR (revue, tests, déploiement, monitoring…)
+- Ce qui précède l'issue (discussions, définition des besoins…)
 
-Et c'est d'ailleus pour cette raison que nous préférons parler d'agents autonomes de codage plutôt que d'agents autonomes de développement.
+C'est pour ça que nous préférons parler d'agents de codage autonomes plutôt que d'agents de développement. Réduire le développement logiciel à du simple codage, c'est franchement simpliste. Le développement, c'est aussi des discussions, des décisions difficiles, des compromis — tout ce qui prend souvent bien plus de temps que de taper des lignes de code.
 
 #### Opportunités
 
-Malgré ces limitations, les agents autonomes présentent un potentiel économique intéressant.
+Malgré leurs limitations, les agents autonomes semblent offrir un potentiel économique intéressant.
 
-Si l'on se met dans la peau d'un manager, et que l'on décide de quantifier le gains que l'on pourrait réaliser en utilisant ces agents, on pourrait arriver à des chiffres impressionnants :
+Si l’on se met dans la peau d’un manager et qu’on essaie de chiffrer les gains potentiels, on pourrait être tenté de faire un calcul qui donne des chiffres impressionnants (mais à prendre avec des pincettes) :
 
-- **L'équivalent de 149,58 jours-homme de code pour 600 $**, contre 75 000 $ en méthode traditionnelle.
+- **L'équivalent de 149,58 jours-homme de code pour 600 $** contre 75 000 $ *(en supposant un TJM de 500 $)*
 
 Pour arriver à ce chiffre, nous avons pris en compte les hypothèses suivantes :
 
-- On intégre un agent autonome de codage (GPT-4o) dans le processus de développement avec un taux de résolution de 18%.
-- On tente systématiquement de résoudre chaque issue 1 fois (1 seule execution = Pass@1).
+- On intègre un agent autonome de codage (GPT-4o) dans le processus de développement avec un taux de résolution de 18%
+- On tente systématiquement de résoudre chaque issue 1 fois (1 seule execution = Pass@1)
 - Coût :
-  - < 2 $ par issue (API GPT-4o) + infrastructure d'exécution.
-  - Cout total : 600 $ pour 300 issues.
+  - < 2 $ par issue (API GPT-4o) + infrastructure d'exécution
+  - Coût total : 600 $ pour 300 issues
 - Résultats :
-  - 54 issues résolues sur 300, soit l'équivalent de 149,58 jours-homme de codage qui ont été automatisés. (*[Une étude](https://arxiv.org/pdf/2404.05427) à montré que les développeurs mettent en moyenne 2,77 jours pour résoudre une issue faisant partie du SWE-Bench-Lite dataset*).
-  - Coût moyen de l'équivalent jour-homme automatisé : 4,01 $.
-  - Durée de résolution moyenne par issue par l'agent: 2 à 10 min.
+  - 54 issues résolues sur 300, soit l'équivalent de 149,58 jours-homme de codage qui ont été automatisés. (*[Une étude](https://arxiv.org/pdf/2404.05427) à montré que les développeurs mettent en moyenne 2,77 jours pour résoudre une issue faisant partie du SWE-Bench-Lite dataset*)
+  - Coût moyen de l'équivalent jour-homme automatisé : 4,01 $
+  - Durée de résolution moyenne par issue par l'agent: 2 à 10 min
 
 > It costs on average ~2.77 days for developers to create pull requests… [samples from SWE-Bench-Lite dataset]
 >
 > Source: “AutoCodeRover: Autonomous Program Improvement” paper. <https://arxiv.org/pdf/2404.05427>
 
-Ces résultats peuvent être bien plus impressionnants si l'on considère des agents plus performants. Par exemple, Moatless Tools avec Claude 3.5 Sonnet a atteint 26,67 % de réussite sur SWE-bench Lite, ce qui pourrait se traduire par :
+Ces résultats peuvent être bien plus impressionnants si l'on considère des agents plus performants.
+Par exemple, *Moatless Tools avec Claude 3.5 Sonnet* a atteint 26,67 % de réussite sur SWE-bench Lite, ce qui pourrait se traduire par :
 
 - **221,63 jours-homme pour 50 $**, contre 111 000 $ en méthode traditionnelle.
 
-### Potentiel d'amélioration
+En plus de performances qui s'améliorent de jour en jour, les coûts dégringolent aussi. En **optimisant les interactions avec le modèle, grâce à l'analyse statique du code**, on pourrait encore réduire ces coûts comme le fait [Moatless Tools](https://github.com/aorwall/moatless-tools) par exemple ce qui a permis de réduire le coût moyen de résolution de l'issue de 2$ à 0,15$.
 
-#### Exécutions multiples
+Nous vous expliquerons plus en détail comment ces agents fonctionnent et comment ils peuvent être optimisés pour un impact maximal dans les prochains articles.
+
+## Potentiel d'amélioration
+
+### Exécutions multiples
 
 Les taux de réussite peuvent être améliorés en multipliant les tentatives. Comme le montre le Pass@k, plusieurs exécutions d'une même issue peuvent significativement augmenter les performances globales.
 
-![ Performance for 6 separate runs of SWE-agent with GPT-4 on SWE-bench Lite. The %Resolved rate for each individual run is shown in the first table, and the pass@k rate in the second](swe-agent-performance-variance-pass-k.png)
+![Performance for 6 separate runs of SWE-agent with GPT-4 on SWE-bench Lite. The %Resolved rate for each individual run is shown in the first table, and the pass@k rate in the second](swe-agent-performance-variance-pass-k.png)
 
 Il est vrai que cette approche peut poser des défis techniques et nécessiter une gestion complexe des ressources, surtout en ce qui concerne le temps de calcul et les infrastructures nécessaires pour supporter plusieurs exécutions simultanées. Cependant, elle reste une piste à explorer pour améliorer les performances des agents. Et même si elle paraît coûteuse, le potentiel d'économie reste très intéressant.
 
-#### Amélioration de la qualité du feedback
+![SWE-agent pass@k performance extrapolation](swe-agent-pass-k-extrapolation.png)
+
+### Amélioration de la qualité du feedback
 
 Un autre levier d'amélioration réside dans la qualité du feedback fourni à l'agent pendant la résolution des issues. En intégrant une approche "test-first", nous pensons que ces taux de réussite pourraient encore augmenter. Le feedback en continu permettrait à l'agent de corriger ses erreurs plus efficacement, améliorant ainsi la qualité et la pertinence des PR générées.
 
-### On automatise tout ? Pas si vite
+## On automatise tout ? Pas si vite
 
 Les capacités actuelles des agents de codage ouvrent de nouvelles perspectives pour l'automatisation de l'ingénierie logicielle, mais elles soulèvent aussi des questions sur la manière dont ces technologies s'intègrent dans nos pratiques existantes. Pour approfondir notre exploration, nous allons maintenant examiner comment ces agents fonctionnent en détail et comment ils peuvent être optimisés pour un impact maximal.
 
