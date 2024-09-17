@@ -1,12 +1,12 @@
 ---
 title: "Ultimate Software Crafter - Partie 3 - Comprenez comment les agents autonomes de codage fonctionnent"
-meta_title: "Quel est l'état de l'art des agents autonome de développement ?"
+meta_title: "Comment fonctionnent les agents autonomes de codage ?"
 date: 2024-06-25T22:48:13+02:00
 draft: true
 author: "Wassel Alazhar"
 authors: ["Wassel Alazhar", "Naji Alazhar"]
 categories: ["Software Engineering", "AI", "Automation"]
-tags: ["LLM", "BENCHMARK", "SWE-Agent", "SWE-bench", "AI", "Automation", "Software Engineering", "Test-Driven Development", "TDD"]
+tags: ["LLM", "BENCHMARK", "SWE-Agent", "SWE-bench", "AI", "Automation", "Software Engineering", "Test-Driven Development", "TDD", "Under the Hood"]
 ---
 
 > Cet article fait suite à la présentation du même titre **Ultimate Software Crafter** que nous (Naji Alazhar et Wassel Alazhar) avons donnée le 25 juin 2024 au Meetup Crafting Data Science. [Cette présentation](https://speakerdeck.com/jcraftsman/the-ultimate-software-crafter-meetup-crafting-data-science) traîte de l'état de l'art des agents autonomes de développement logiciel et de leur fonctionnement.
